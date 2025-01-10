@@ -1,0 +1,335 @@
+/* css/style.css */
+
+/* Variables CSS pour la largeur de la sidebar */
+:root {
+    --sidebar-width: 220px;
+    --sidebar-width-mobile: 200px;
+}
+
+/* Réinitialisation et styles de base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end; /* Aligne les éléments à droite */
+    align-items: center;
+    position: relative; /* Pour le positionnement du modal */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right form {
+    display: flex;
+    align-items: center;
+}
+
+.header-right input {
+    padding: 5px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.header-right button {
+    padding: 5px 10px;
+    border: none;
+    background: #333;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.header-right select {
+    padding: 5px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff; /* Couleur de fond du cercle */
+    margin-left: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    position: relative;
+}
+
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styles pour le Modal */
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed; /* Fixé par rapport à la fenêtre */
+    z-index: 1002; /* Au-dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largeur complète */
+    height: 100%; /* Hauteur complète */
+    overflow: auto; /* Activation du défilement si nécessaire */
+    background-color: rgba(0,0,0,0.5); /* Fond semi-transparent */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% du haut et centré */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px; /* Largeur maximale */
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.profile {
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.modal-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-links li {
+    margin: 10px 0;
+}
+
+.modal-links li a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.modal-links li a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar Styles */
+.sidebar-container {
+    position: fixed; /* Fixe la sidebar */
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000; /* S'assure que la sidebar est au-dessus des autres éléments */
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: #333;
+    color: white;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 60px 0 0 0; /* Espace pour le toggle */
+}
+
+.sidebar nav ul li {
+    padding: 15px 20px;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Toggle Button Styles */
+.toggle {
+    position: fixed; /* Fixe le toggle */
+    top: 10px;
+    left: var(--sidebar-width);
+    font-size: 30px;
+    cursor: pointer;
+    background: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 0 3px 3px 0;
+    transition: left 0.3s ease;
+    z-index: 1001; /* Au-dessus de la sidebar */
+}
+
+.toggle:hover {
+    background: #555;
+}
+
+/* Content Styles */
+.content {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+footer {
+    background: #4CAF50;
+    color: white;
+    text-align: center;
+    height : 100px;
+    padding: calc(10px - 1cm); /* Réduit le padding pour baisser la hauteur */  
+    display: flex;
+     justify-content: center; /* Aligne les éléments à droite */
+   /* position: fixed;  Fixe le footer en bas */
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* S'assure que le footer est au-dessus du contenu */
+}
+
+/* Conteneur principal du menu horizontal */
+.menu-horizontal-container {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #007BFF; /* Bleu pour le menu horizontal */
+    padding: 10px;
+    gap: 15px; /* Espacement entre les menus */
+    width: 100%; /* Étend la bande bleue sur toute la ligne */
+    margin-left: 0; /* Supprime le décalage général */
+    position: relative; /* Permet de placer les titres correctement */
+}
+
+/* Décale les titres après la sidebar */
+.menu-horizontal-container::before {
+    content: "";
+    display: block;
+    width: calc(var(--sidebar-width, 250px) + 1cm);
+    flex-shrink: 0; /* Empêche la réduction de cet espace */
+}
+
+/* Chaque menu (titre + sous-menus) */
+.menu-item {
+    position: relative;
+}
+
+/* Titre du menu */
+.menu-title a {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: inline-block;
+    background-color: #0056b3; /* Couleur pour le titre */
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.menu-title a:hover {
+    background-color: #004080; /* Changement de couleur au survol */
+}
+
+/* Sous-menus */
+.menu-vertical {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #0056b3; /* Bleu foncé pour les sous-menus */
+    border-radius: 5px;
+    display: none; /* Caché par défaut */
+    position: absolute; /* Permet de placer le menu en bas du titre */
+    top: 100%; /* Positionné sous le titre */
+    left: 0;
+    z-index: 10;
+    width: 150px; /* Largeur des sous-menus */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Affichage des sous-menus au survol */
+.menu-item:hover .menu-vertical {
+    display: block;
+}
+
+/* Liens des sous-menus */
+.menu-vertical li {
+    margin: 5px 0;
+}
+
+.menu-vertical li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.menu-vertical li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Surbrillance au survol */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: var(--sidebar-width-mobile);
+    }
+
+    .sidebar {
+        width: var(--sidebar-width);
+    }
+
+    .toggle {
+        left: var(--sidebar-width);
+    }
+
+    .content {
+        margin-left: var(--sidebar-width);
+    }
+}
+
